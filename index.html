@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillSwap - Learn Together</title>
+
+<style>
+:root {
+    --primary: #6658e8;
+    --dark: #17233c;
+    --light: #f6f8fc;
+    --white: #ffffff;
+    --muted: #68758d;
+    --border: #e7ebf3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+}
+
+header {
+    background: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 65px 0;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.section {
+    padding: 35px 0;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+
+.card h3 {
+    color: var(--primary);
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.category {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 20px;
+}
+
+.form-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.student-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.student-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.student-card h3 {
+    margin-bottom: 5px;
+}
+
+.tag {
+    display: inline-block;
+    background: #efeeff;
+    color: var(--primary);
+    padding: 6px 10px;
+    margin: 4px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    color: var(--muted);
+}
+
+.hidden {
+    display: none;
+}
+
+@media(max-width: 750px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .cards, .student-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SkillSwap ✦</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#how">How It Works</a>
+        <a href="#skills">Skills</a>
+        <a href="#students">Discover</a>
+        <a href="#login">Login</a>
+    </nav>
+
+    <button onclick="showSection('register')">Join Now</button>
+</header>
+
+<main class="container">
+
+<section class="hero" id="home">
+    <div>
+        <h1>Learn Together. <span>Grow Together.</span></h1>
+
+        <p>
+            SkillSwap is a student skill-sharing platform.
+            Teach the skills you know and learn new skills
+            from other students. Connect, collaborate and
+            improve your knowledge together.
+        </p>
+
+        <button onclick="showSection('register')">
+            Get Started
+        </button>
+
+        <button onclick="showSection('students')">
+            Explore Students
+        </button>
+    </div>
+
+    <div>
+        <img
+        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900"
+        alt="Students learning together">
+    </div>
+</section>
+
+<section class="section" id="how">
+    <h2>How SkillSwap Works</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>1. Create Your Profile</h3>
+            <p>
+                Register as a student and add the skills
+                you can teach and the skills you want to learn.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>2. Find Your Match</h3>
+            <p>
+                Discover students whose teaching skills
+                match your learning interests.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>3. Exchange Skills</h3>
+            <p>
+                Send a skill exchange request and learn
+                from each other through collaboration.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="skills">
+    <h2>Popular Skills</h2>
+
+    <div class="categories">
+        <span class="category">Programming</span>
+        <span class="category">Web Development</span>
+        <span class="category">Graphic Design</span>
+        <span class="category">Video Editing</span>
+        <span class="category">Photography</span>
+        <span class="category">Public Speaking</span>
+        <span class="category">English Communication</span>
+        <span class="category">Mathematics</span>
+        <span class="category">Music</span>
+        <span class="category">Drawing</span>
+        <span class="category">Artificial Intelligence</span>
+    </div>
+</section>
+
+<section class="section" id="register">
+    <div class="form-box">
+        <h2>Create Your Account</h2>
+
+        <form id="registerForm">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label>College</label>
+            <input type="text" id="college" placeholder="Enter your college" required>
+
+            <label>Branch</label>
+            <select id="branch">
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>Mechanical</option>
+                <option>Civil</option>
+                <option>Other</option>
+            </select>
+
+            <label>Year</label>
+            <select id="year">
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+            </select>
+
+            <label>Skills I Can Teach</label>
+            <input type="text" id="teach" placeholder="Example: C, Python">
+
+            <label>Skills I Want to Learn</label>
+            <input type="text" id="learn" placeholder="Example: HTML, Editing">
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</section>
+
+<section class="section" id="students">
+    <h2>Discover Students</h2>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search students or skills..."
+        oninput="displayStudents()">
+
+    <div class="student-grid" id="studentList"></div>
+</section>
+
+<section class="section" id="matches">
+    <h2>My Skill Matches</h2>
+    <div id="matchList"></div>
+</section>
+
+</main>
+
+<footer>
+    SkillSwap © 2026 | Learn a Skill. Teach a Skill. Grow Together.
+</footer>
+
+<script>
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+const demoStudents = [
+    {
+        name: "Rahul",
+        email: "rahul@example.com",
+        college: "RGUKT",
+        branch: "CSE",
+        year: "2nd Year",
+        teach: ["Python", "C Programming"],
+        learn: ["Video Editing", "Graphic Design"]
+    },
+    {
+        name: "Priya",
+        email: "priya@example.com",
+        college: "RGUKT",
+        branch: "ECE",
+        year: "2nd Year",
+        teach: ["Video Editing", "Photography"],
+        learn: ["Python", "C Programming"]
+    },
+    {
+        name: "Arjun",
+        email: "arjun@example.com",
+        college: "RGUKT",
+        branch: "CSE",
+        year: "1st Year",
+        teach: ["HTML", "CSS"],
+        learn: ["Java", "Mathematics"]
+    }
+];
+
+if (students.length === 0) {
+    students = demoStudents;
+    localStorage.setItem("students", JSON.stringify(students));
+}
+
+let currentUser = null;
+
+function showSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const student = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        college: document.getElementById("college").value,
+        branch: document.getElementById("branch").value,
+        year: document.getElementById("year").value,
+        teach: document.getElementById("teach").value
+            .split(",").map(skill => skill.trim()).filter(Boolean),
+        learn: document.getElementById("learn").value
+            .split(",").map(skill => skill.trim()).filter(Boolean)
+    };
+
+    const alreadyExists = students.some(
+        s => s.email.toLowerCase() === student.email.toLowerCase()
+    );
+
+    if (alreadyExists) {
+        alert("This email is already registered!");
+        return;
+    }
+
+    students.push(student);
+
+    localStorage.setItem("students", JSON.stringify(students));
+
+    currentUser = student;
+
+    alert("Registration successful!");
+
+    this.reset();
+
+    displayStudents();
+    displayMatches();
+});
+
+function displayStudents() {
+    const list = document.getElementById("studentList");
+    const searchValue = document.getElementById("search").value.toLowerCase();
+
+    list.innerHTML = "";
+
+    const filtered = students.filter(student => {
+        return student.name.toLowerCase().includes(searchValue) ||
+            student.teach.join(" ").toLowerCase().includes(searchValue) ||
+            student.learn.join(" ").toLowerCase().includes(searchValue);
+    });
+
+    if (filtered.length === 0) {
+        list.innerHTML = "<p>No students found.</p>";
+        return;
+    }
+
+    filtered.forEach(student => {
+        const card = document.createElement("div");
+        card.className = "student-card";
+
+        card.innerHTML = `
+            <h3>${escapeHTML(student.name)}</h3>
+            <p>${escapeHTML(student.college)} | ${escapeHTML(student.branch)}</p>
+
+            <strong>Can Teach:</strong><br>
+            ${student.teach.map(skill =>
+                `<span class="tag">${escapeHTML(skill)}</span>`
+            ).join("")}
+
+            <br><br>
+
+            <strong>Wants to Learn:</strong><br>
+            ${student.learn.map(skill =>
+                `<span class="tag">${escapeHTML(skill)}</span>`
+            ).join("")}
+
+            <br><br>
+
+            <button onclick="sendRequest('${encodeURIComponent(student.email)}')">
+                Send Request
+            </button>
+        `;
+
+        list.appendChild(card);
+    });
+}
+
+function displayMatches() {
+    const matchList = document.getElementById("matchList");
+
+    if (!currentUser) {
+        matchList.innerHTML = "<p>Register first to find your skill matches.</p>";
+        return;
+    }
+
+    const matchedStudents = students.filter(student => {
+        if (student.email === currentUser.email) return false;
+
+        const iCanTeach = currentUser.teach.some(skill =>
+            student.learn.some(item =>
+                item.toLowerCase() === skill.toLowerCase()
+            )
+        );
+
+        const theyCanTeach = student.teach.some(skill =>
+            currentUser.learn.some(item =>
+                item.toLowerCase() === skill.toLowerCase()
+            )
+        );
+
+        return iCanTeach && theyCanTeach;
+    });
+
+    if (matchedStudents.length === 0) {
+        matchList.innerHTML = "<p>No perfect matches found yet. Try adding more skills!</p>";
+        return;
+    }
+
+    matchList.innerHTML = matchedStudents.map(student => `
+        <div class="student-card">
+            <h3>${escapeHTML(student.name)}</h3>
+            <p>Great! You can exchange skills with this student.</p>
+            <button onclick="sendRequest('${encodeURIComponent(student.email)}')">
+                Request Skill Swap
+            </button>
+        </div>
+    `).join("");
+}
+
+function sendRequest(encodedEmail) {
+    if (!currentUser) {
+        alert("Please register first!");
+        showSection("register");
+        return;
+    }
+
+    const email = decodeURIComponent(encodedEmail);
+
+    if (email === currentUser.email) {
+        alert("You cannot send a request to yourself.");
+        return;
+    }
+
+    let requests = JSON.parse(localStorage.getItem("requests")) || [];
+
+    const alreadySent = requests.some(request =>
+        request.from === currentUser.email &&
+        request.to === email &&
+        request.status === "Pending"
+    );
+
+    if (alreadySent) {
+        alert("You have already sent a request to this student.");
+        return;
+    }
+
+    requests.push({
+        from: currentUser.email,
+        to: email,
+        status: "Pending"
+    });
+
+    localStorage.setItem("requests", JSON.stringify(requests));
+
+    alert("Skill Swap request sent successfully!");
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[character]);
+}
+
+displayStudents();
+displayMatches();
+</script>
+
+</body>
+</html>
